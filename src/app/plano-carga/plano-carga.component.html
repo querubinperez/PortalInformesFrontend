@@ -24,17 +24,17 @@
   </div>
 </div>
 
+<div *ngIf="informeSismeds">
+  <table [dataSource]="informeSismeds" class="mat-elevation-z8" mat-table>
 
-<table [dataSource]="informeSismeds" class="mat-elevation-z8" mat-table>
+    <ng-container matColumnDef="num_registro">
+      <th *matHeaderCellDef mat-header-cell> No.</th>
+      <td *matCellDef="let element" mat-cell> {{element.num_registro}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="num_registro">
-    <th *matHeaderCellDef mat-header-cell> No.</th>
-    <td *matCellDef="let element" mat-cell> {{element.num_registro}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="idcargaventas">
-    <th *matHeaderCellDef mat-header-cell> idcargaventas</th>
-    <td *matCellDef="let element" mat-cell> {{element.idcargaventas}} </td>
+    <ng-container matColumnDef="idcargaventas">
+      <th *matHeaderCellDef mat-header-cell> idcargaventas</th>
+      <td *matCellDef="let element" mat-cell> {{element.idcargaventas}} </td>
   </ng-container>
 
   <ng-container matColumnDef="nit_cliente">
@@ -99,9 +99,10 @@
     </ng-container>
   -->
 
-  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-</table>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</div>
 
 <br>
 <br>
