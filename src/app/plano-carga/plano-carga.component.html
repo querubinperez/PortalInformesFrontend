@@ -1,0 +1,82 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+
+
+        <h2>Carga de Archivos Planos</h2>
+        <br>
+        <p>
+          Por favor seleccionar el archivo plano a cargar:
+        </p>
+        <br>
+        <p>
+          <input id="plano" type="file" (change)="onChange($event.target.files);">
+        </p>
+        <br>
+        <div *ngIf="fileContent">
+          <h3>File Content</h3>
+          <pre>{{fileContent}}</pre>
+        </div>
+        <br>
+        <p>
+          <button (click)="cargarPlano(fileContent);">Cargar y Convertir</button>
+        </p>
+
+
+  </div>
+</div>
+
+
+<!--
+<div>
+  <label for="plano" class="btn">Seleccionar archivo plano a cargar: </label>
+  <input id="plano" type="file" (change)="onChange($event.target.files);">
+</div>
+<button (click)="cargarPlano(fileContent);">go back</button>
+
+
+<div>
+  <h3>File Content</h3>
+  <pre> {{fileContent}} </pre>
+</div>
+
+
+
+<div *ngIf="informeSismeds">
+<table>
+  <tr>
+    <td> numRegistro</td>
+    <td> idcargaventas</td>
+    <td> nitCliente</td>
+    <td> codigoProducto</td>
+    <td> cantidadUnidadesVendidas</td>
+    <td> valorUnitario</td>
+    <td> numeroFactura</td>
+    <td> fechaFactura</td>
+    <td> tipoOperacion</td>
+    <td> tipoTransaccion</td>
+    <td> unidadMedidaFacturada</td>
+    <td> codigoHabilitacion</td>
+    <td> expediente</td>
+    <td> consecutivo</td>
+  </tr>
+  <tr *ngFor="let registro of informeSismeds">
+    <td> {{registro.num_registro}}</td>
+    <td>{{registro.idcargaventas}}</td>
+    <td> {{registro.nit_cliente}}</td>
+    <td>{{registro.codigo_producto}}</td>
+    <td> {{registro.cantidad_unidades_vendidas}}</td>
+    <td>{{registro.valor_unitario}}</td>
+    <td> {{registro.numero_factura}}</td>
+    <td>{{registro.fecha_factura}}</td>
+    <td> {{registro.tipo_operacion}}</td>
+    <td>{{registro.tipo_transaccion}}</td>
+    <td> {{registro.unidad_medida_facturada}}</td>
+    <td>{{registro.codigo_habilitacion}}</td>
+    <td> {{registro.expediente}}</td>
+    <td>{{registro.consecutivo}}</td>
+  </tr>
+</table>
+</div>
+-->
+<br>
+<br>
