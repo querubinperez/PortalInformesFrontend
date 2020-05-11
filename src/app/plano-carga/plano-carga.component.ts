@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { Plano} from '../plano';
-import { PlanoCargaService} from '../plano-carga.service';
-import { MessageService} from '../message.service';
+import {Plano} from '../plano';
+import {PlanoCargaService} from '../plano-carga.service';
+import {MessageService} from '../message.service';
 import {Sismed} from '../sismed';
+import {SismedInformeService} from '../sismed-informe.service';
 
 
 @Component({
@@ -13,12 +14,18 @@ import {Sismed} from '../sismed';
 })
 export class PlanoCargaComponent implements OnInit {
 
-  fileContent: string | ArrayBuffer = '';
+  displayedColumns: string[] = ['num_registro', 'idcargaventas', 'nit_cliente', 'codigo_producto',
+    'cantidad_unidades_vendidas', 'valor_unitario', 'numero_factura', 'fecha_factura',
+    'tipo_operacion'];
+
+  fileContent: string;
   planos: Plano[];
   informeSismeds: Sismed[];
 
   constructor(private planoCargaService: PlanoCargaService,
-              private messageService: MessageService) { }
+              private informeSismedService: SismedInformeService,
+              private messageService: MessageService) {
+  }
 
   ngOnInit() {
   }
@@ -28,22 +35,25 @@ export class PlanoCargaComponent implements OnInit {
     const fileReader: FileReader = new FileReader();
     const self = this;
     fileReader.onloadend = function(x) {
-      self.fileContent = fileReader.result;
+      self.fileContent = fileReader.result as string;
     }
     fileReader.readAsText(file);
   }
 
   cargarPlano(dataPlano: string): void {
     dataPlano = dataPlano.trim();
-    if (!dataPlano) { return; }
+    if (!dataPlano) {
+      return;
+    }
     // this.messageService.add(`PlanoCargaComponent: ${dataPlano}`);
-    this.planoCargaService.addPlano({ id: 0, data_plano: dataPlano} as Plano);
-    /*
-    this.planoCargaService.cargaPlano({ id: 0, data_plano: dataPlano} as Plano)
-      .subscribe(plano => {
-        this.informeSismeds = plano;
+    this.planoCargaService.addPlano({id: 0, data_plano: dataPlano} as Plano);
+    this.planoCargaService.cargaPlano({id: 0, data_plano: dataPlano} as Plano)
+      .subscribe(informe => {
+        this.informeSismeds = informe;
+        informe.forEach((element) => {
+          this.informeSismedService.addSismed(element);
+        });
       });
-     */
   }
 
 }

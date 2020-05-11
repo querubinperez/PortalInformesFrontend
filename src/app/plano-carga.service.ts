@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 
 import {Plano} from './plano';
 import {Sismed} from './sismed';
-import { MessageService } from './message.service';
+import {MessageService} from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,8 @@ export class PlanoCargaService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService ) { }
+    private messageService: MessageService) {
+  }
 
   cargaPlano(plano: Plano): Observable<Sismed[]> {
     console.log(plano);

@@ -1,4 +1,5 @@
 table {
+  border-collapse: collapse;
   width: 100%;
 }
 
@@ -7,6 +8,42 @@ table {
   width: 100%;
 }
 
-td, th {
-  width: 25%;
+.mat-column-num_registro {
+  width: 50px;
+}
+
+.mat-column-idcargaventas {
+  width: 100px;
+}
+
+.mat-column-nit_cliente {
+  width: 120px;
+}
+
+.mat-column-codigo_producto {
+  width: 100px;
+}
+
+.mat-column-cantidad_unidades_vendidas {
+  width: 100px;
+}
+
+.mat-column-valor_unitario {
+  width: 100px;
+}
+
+.mat-column-numero_factura {
+  width: 100px;
+}
+
+.mat-column-fecha_factura {
+  width: 100px;
+}
+
+.mat-column-tipo_operacion {
+  width: 100px;
+}
+
+.mat-column-tipo_transaccion {
+  width: 100px;
 }
